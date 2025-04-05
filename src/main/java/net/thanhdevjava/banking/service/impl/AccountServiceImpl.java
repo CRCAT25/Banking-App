@@ -22,4 +22,12 @@ public class AccountServiceImpl implements AccountService {
         Account savedAccount = accountRepository.save(account);
         return AccountMapper.mapToAccountDTO(savedAccount);
     }
+
+    @Override
+    public AccountDTO getAccountById(Long id) {
+        Account foundAccount = accountRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+        return AccountMapper.mapToAccountDTO(foundAccount);
+    }
 }

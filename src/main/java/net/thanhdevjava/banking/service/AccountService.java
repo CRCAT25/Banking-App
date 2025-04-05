@@ -5,4 +5,6 @@ import net.thanhdevjava.banking.entity.Account;
 
 public interface AccountService {
     AccountDTO createAccount(AccountDTO accountDTO);
+
+    AccountDTO getAccountById(Long id);
 }
