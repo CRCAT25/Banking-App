@@ -57,4 +57,11 @@ public class AccountController {
     public ResponseEntity<Iterable<AccountDTO>> getAllAccounts() {
         return ResponseEntity.ok(accountService.getAllAccounts());
     }
+
+    // Delete account by id REST API
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAccount(@PathVariable Long id) {
+        accountService.deleteAccount(id);
+        return ResponseEntity.ok("Account deleted");
+    }
 }

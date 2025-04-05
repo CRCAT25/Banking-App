@@ -69,4 +69,13 @@ public class AccountServiceImpl implements AccountService {
                 .map(AccountMapper::mapToAccountDTO)
                 .toList();
     }
+
+    @Override
+    public void deleteAccount(Long id) {
+        Account account = accountRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+
+        accountRepository.delete(account);
+    }
 }
