@@ -40,4 +40,21 @@ public class AccountController {
 
         return ResponseEntity.ok(accountDTO);
     }
+
+    // Withdraw REST API
+    @PutMapping("/{id}/withdraw")
+    public ResponseEntity<AccountDTO> withdraw(@PathVariable Long id,
+                                              @RequestBody Map<String, Double> requestBody) {
+
+        Double amount = requestBody.get("amount");
+        AccountDTO accountDTO = accountService.withdraw(id, amount);
+
+        return ResponseEntity.ok(accountDTO);
+    }
+
+    // Get all accounts REST API
+    @GetMapping
+    public ResponseEntity<Iterable<AccountDTO>> getAllAccounts() {
+        return ResponseEntity.ok(accountService.getAllAccounts());
+    }
 }
